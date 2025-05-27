@@ -7,10 +7,12 @@ public class EnemyMovement : MonoBehaviour
 
     private bool playerInRange = false;
 
+    private Animator _anim;
     private Rigidbody _rb;
 
     private void Start()
     {
+        _anim = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -41,6 +43,7 @@ public class EnemyMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            _anim.SetBool("isRunning",true);
         }
     }
 
@@ -49,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            _anim.SetBool("isRunning", false);
         }
     }
 }

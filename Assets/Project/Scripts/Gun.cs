@@ -14,6 +14,9 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState == GameManager.GameStateEnum.Paused)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
